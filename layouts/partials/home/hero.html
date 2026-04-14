@@ -1,5 +1,5 @@
 {{ with .Params.hero }}
-<section class="relative mb-0 bg-cover bg-[position:70%_center] pt-[140px] text-white" style="background-image: url('{{ .background }}');">
+<section class="relative mb-0 bg-cover bg-[position:70%_center] pt-[140px] text-white" style="background-image: url('{{ strings.TrimPrefix "/" .background | absURL }}');">
   <div class="absolute inset-0 z-[1] bg-[rgba(0,0,30,0.3)]"></div>
 
   <div class="relative z-[2] mx-auto max-w-[1272px] px-4 lg:px-0">
@@ -19,7 +19,9 @@
       {{ range $index, $tick := .ticks }}
       <div class="{{ if eq $index 0 }}lg:text-left{{ else if eq $index 2 }}lg:text-right{{ else }}lg:text-center{{ end }}">
         <div class="flex flex-col items-center justify-center gap-2 lg:flex-row lg:gap-[0.3em] {{ if eq $index 0 }}lg:justify-start{{ else if eq $index 2 }}lg:justify-end{{ else }}lg:justify-center{{ end }}">
-          <span class="relative block h-[1em] w-[1em] shrink-0 rounded-full bg-[#2287c8] before:absolute before:left-[0.18em] before:top-[0.18em] before:h-[0.65em] before:w-[0.65em] before:bg-[url('/dist/images/check.svg')] before:bg-contain before:bg-no-repeat before:content-['']" aria-hidden="true"></span>
+          <span class="relative block h-[1em] w-[1em] shrink-0 rounded-full bg-[#2287c8]" aria-hidden="true">
+            <span class="absolute left-[0.18em] top-[0.18em] block h-[0.65em] w-[0.65em] bg-contain bg-no-repeat" style="background-image:url('{{ "dist/images/check.svg" | absURL }}')"></span>
+          </span>
           <span><strong>{{ $tick.label }}</strong> {{ $tick.suffix }}</span>
         </div>
       </div>

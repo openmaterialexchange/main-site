@@ -1,5 +1,5 @@
 {{ with .Params.alt }}
-<section class="relative bg-cover bg-center bg-no-repeat px-8 py-[6em] text-center max-[576px]:py-[4em]" style="background-image: url('{{ .background }}')">
+<section class="relative bg-cover bg-center bg-no-repeat px-8 py-[6em] text-center max-[576px]:py-[4em]" style="background-image: url('{{ strings.TrimPrefix "/" .background | absURL }}')">
   <div class="absolute inset-0 bg-[rgba(0,0,30,0.3)]"></div>
 
   <div class="relative mx-auto max-w-[1272px]">

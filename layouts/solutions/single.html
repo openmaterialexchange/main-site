@@ -12,7 +12,7 @@
 
   <div class="solutions-live solution-detail-live">
     {{ with $solution.hero }}
-      <div class="contentBlock fullHeight imageTextCols background_imagewithfader large" style="background-image:url('/dist/images/solutions-live/inspectors-background.jpg')">
+      <div class="contentBlock fullHeight imageTextCols background_imagewithfader large" style="background-image:url('{{ "dist/images/solutions-live/inspectors-background.jpg" | absURL }}')">
         <div class="fader"></div>
         <div class="content container page">
           <div>
@@ -244,7 +244,7 @@
                 <div class="row">
                   <div class="col px-5 md:px-0 col-lg-8 mx-auto">
                     <div class="text">
-                      <p><img src="/dist/images/solutions-detail/teams-logo-300px.png" alt="{{ .heading }}" class="solution-reveal solution-teams-badge"></p>
+                      <p><img src="{{ "/dist/images/solutions-detail/teams-logo-300px.png" | relURL }}" alt="{{ .heading }}" class="solution-reveal solution-teams-badge"></p>
                       {{ with .note }}
                         <h3>{{ . }}</h3>
                       {{ end }}

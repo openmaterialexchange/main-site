@@ -49,6 +49,6 @@
   {{- if or (hasPrefix $resolved "http://") (hasPrefix $resolved "https://") -}}
     {{- $resolved -}}
   {{- else -}}
-    {{- $resolved | absURL -}}
+    {{- strings.TrimPrefix "/" $resolved | absURL -}}
   {{- end -}}
 {{- end -}}

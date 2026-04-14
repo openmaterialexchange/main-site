@@ -2,5 +2,5 @@
 {{- if $demoPage -}}
   {{- printf "%s#book-demo" $demoPage.RelPermalink -}}
 {{- else -}}
-  /demo/#book-demo
+  {{- printf "%s#book-demo" ("/demo/" | relURL) -}}
 {{- end -}}

@@ -1,7 +1,8 @@
-baseURL = "https://steeltrace.co/"
+baseURL = "https://openmaterialexchange.github.io/main-site/"
 languageCode = "en-us"
 title = "SteelTrace"
 enableRobotsTXT = true
+canonifyURLs = true
 
 [params]
 description = "SteelTrace is a digital platform for steel supply-chain quality data, traceability, and compliance, helping teams collect, verify, and use quality data in one place."

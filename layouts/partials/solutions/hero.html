@@ -1,7 +1,7 @@
 {{ with .Params.hero }}
   <div
     class="contentBlock fullHeight imageTextCols background_imagewithfader large"
-    style="background-image:url('{{ .background }}')"
+    style="background-image:url('{{ strings.TrimPrefix "/" .background | absURL }}')"
   >
     <div class="fader"></div>
     <div class="content container page">

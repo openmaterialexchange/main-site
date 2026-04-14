@@ -3,8 +3,8 @@
 <footer class="mt-0 bg-[#2b2b2b] px-0 py-[56px] text-[14px] text-white">
   <div class="mx-auto max-w-[1272px] px-5 lg:px-8 xl:px-0">
     <div class="mb-[48px] flex justify-center">
-      <a href="/" class="block w-[330px] max-w-[78vw]">
-        <img src="/dist/images/logo_white.svg" alt="SteelTrace Logo" class="h-auto w-full">
+      <a href="{{ "/" | relURL }}" class="block w-[330px] max-w-[78vw]">
+        <img src="{{ "/dist/images/logo_white.svg" | relURL }}" alt="SteelTrace Logo" class="h-auto w-full">
       </a>
     </div>
 
@@ -64,14 +64,14 @@
     </div>
 
     <div class="mt-[42px] flex justify-center">
-      <img src="{{ $nav.iso_logo.src }}" alt="{{ $nav.iso_logo.alt }}" class="h-auto w-[70px]">
+      <img src="{{ $nav.iso_logo.src | relURL }}" alt="{{ $nav.iso_logo.alt }}" class="h-auto w-[70px]">
     </div>
 
     <ul class="mt-[28px] flex flex-wrap items-center justify-center gap-x-[26px] gap-y-4">
       {{ range $nav.social_links }}
         <li>
           <a href="{{ .url }}" target="_blank" rel="noreferrer" aria-label="{{ .title }}" class="block opacity-95 transition-opacity hover:opacity-100">
-            <img src="{{ .icon }}" alt="{{ .title }}" class="block h-[50px] w-[50px] shrink-0">
+            <img src="{{ .icon | relURL }}" alt="{{ .title }}" class="block h-[50px] w-[50px] shrink-0">
           </a>
         </li>
       {{ end }}

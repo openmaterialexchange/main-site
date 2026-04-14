@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
 export default defineConfig({
+  cacheDir: path.resolve(__dirname, ".cache/vite"),
   plugins: [vue(), tailwindcss()],
   build: {
     outDir: path.resolve(__dirname, "../static/dist"),

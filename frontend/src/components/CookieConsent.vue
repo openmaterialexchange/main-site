@@ -19,7 +19,7 @@
           <div v-if="!manageMode" class="space-y-4">
             <p class="text-[1rem] leading-[1.65]">
               We use cookies to improve the security of our website, identify areas for enhancements, and better help our customers.
-              See our <a href="/privacy/" target="_blank" rel="noreferrer" class="text-[#283339] underline underline-offset-4 transition-colors hover:text-[#01466c]">Privacy Statement</a> for details.
+              See our <a :href="privacyUrl" target="_blank" rel="noreferrer" class="text-[#283339] underline underline-offset-4 transition-colors hover:text-[#01466c]">Privacy Statement</a> for details.
             </p>
 
             <p class="text-[1rem] leading-[1.65]">
@@ -38,7 +38,7 @@
               <p class="text-[1rem] leading-[1.65]">
                 These cookies allow us to analyse the usage of our site, so that we can review and improve on the user experience of the site.
                 They also allow us to engage with potential customers who submit forms on this site in a proactive and relevant fashion.
-                <a href="/privacy/#cookies" class="text-[#283339] underline underline-offset-4 transition-colors hover:text-[#01466c]">Learn More</a>
+                <a :href="privacyCookiesUrl" class="text-[#283339] underline underline-offset-4 transition-colors hover:text-[#01466c]">Learn More</a>
               </p>
             </section>
 
@@ -69,7 +69,7 @@
               <small class="text-[0.9rem] leading-[1.6] text-[#333132]">
                 These cookies allow us to analyse the usage of our site, so that we can review and improve on the user experience of the site.
                 They also allow us to engage with potential customers who submit forms on this site in a proactive and relevant fashion.
-                <a href="/privacy/#cookies" class="text-[#283339] underline underline-offset-4 transition-colors hover:text-[#01466c]">Learn More</a>
+                <a :href="privacyCookiesUrl" class="text-[#283339] underline underline-offset-4 transition-colors hover:text-[#01466c]">Learn More</a>
               </small>
             </label>
           </div>
@@ -104,12 +104,15 @@
 
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref, watch } from "vue"
+import { toSitePath } from "../siteBase"
 
 type ConsentValue = "yes" | "no"
 
 const CONSENT_COOKIE = "tracking_consent"
 const LEGACY_STORAGE_KEY = "cookie-consent"
-const logoWhiteUrl = "/dist/images/logo_white.svg"
+const logoWhiteUrl = toSitePath("dist/images/logo_white.svg")
+const privacyUrl = toSitePath("privacy/")
+const privacyCookiesUrl = `${privacyUrl}#cookies`
 const visible = ref(false)
 const manageMode = ref(false)
 const analyticalConsent = ref(false)

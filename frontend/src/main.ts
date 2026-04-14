@@ -6,6 +6,7 @@ import { initContactForm } from "./contactForm"
 import { initHowItWorksPage } from "./howItWorks"
 import { initNewsletterForm } from "./newsletterForm"
 import { initProductBrochureForm } from "./productBrochureForm"
+import { toSitePath } from "./siteBase"
 import { initWeeklyDemoForm } from "./weeklyDemoForm"
 import "./styles/app.css"
 import "./styles/demo.scss"
@@ -17,6 +18,9 @@ import SolutionDetailPageMount from "./components/SolutionDetailPageMount.vue"
 import SolutionsPageMount from "./components/SolutionsPageMount.vue"
 
 document.addEventListener("DOMContentLoaded", () => {
+  const contactPathname = new URL(toSitePath("contact/"), window.location.origin).pathname.replace(/\/$/, "")
+  const demoPathname = new URL(toSitePath("demo/"), window.location.origin).pathname.replace(/\/$/, "")
+
   initBlockchainGuideForm()
   initCalendlyDemo()
   initContactForm()
@@ -28,11 +32,20 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll<HTMLAnchorElement>("a").forEach((link) => {
     const href = link.getAttribute("href")
     if (href === "#book-demo") {
-      link.href = "/demo/#book-demo"
+      link.href = toSitePath("demo/#book-demo")
       return
     }
 
-    if (href !== "/contact/" && href !== "/contact" && href !== "/demo/" && href !== "/demo") return
+    if (!href) return
+
+    let pathname = ""
+    try {
+      pathname = new URL(href, window.location.origin).pathname.replace(/\/$/, "")
+    } catch {
+      return
+    }
+
+    if (pathname !== contactPathname && pathname !== demoPathname) return
 
     const text = link.textContent?.trim().replace(/\s+/g, " ") ?? ""
     const ariaLabel = link.getAttribute("aria-label")?.trim() ?? ""
@@ -40,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const combinedLabel = `${text} ${ariaLabel} ${imageAlt}`.trim()
 
     if (/get a demo|book a demo|choose date and time/i.test(combinedLabel)) {
-      link.href = "/demo/#book-demo"
+      link.href = toSitePath("demo/#book-demo")
     }
   })
 

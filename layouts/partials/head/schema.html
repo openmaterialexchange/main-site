@@ -3,7 +3,7 @@
 {{- $siteDescription := .Site.Params.description -}}
 {{- $logoURL := "" -}}
 {{- with .Site.Params.logo -}}
-  {{- $logoURL = . | absURL -}}
+  {{- $logoURL = strings.TrimPrefix "/" . | absURL -}}
 {{- end -}}
 
 {{- $organization := dict
